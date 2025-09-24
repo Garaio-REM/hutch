@@ -150,16 +150,19 @@ describe Hutch::Config do
     context 'for an ENV-overriden value attribute' do
       around do |example|
         ENV['HUTCH_MQ_HOST'] = 'example.com'
+        ENV['HUTCH_MQ_TLS_SERVER_NAME'] = 'ssl.example.com'
         ENV['HUTCH_MQ_PORT'] = '10001'
         ENV['HUTCH_MQ_TLS'] = 'true'
         example.run
         ENV.delete('HUTCH_MQ_HOST')
+        ENV.delete('HUTCH_MQ_TLS_SERVER_NAME')
         ENV.delete('HUTCH_MQ_PORT')
         ENV.delete('HUTCH_MQ_TLS')
       end
 
       it 'returns the override' do
         expect(Hutch::Config.mq_host).to eq 'example.com'
+        expect(Hutch::Config.mq_tls_server_name).to eq 'ssl.example.com'
       end
 
       it 'returns the override for integers' do

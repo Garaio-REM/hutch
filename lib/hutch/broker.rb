@@ -300,6 +300,9 @@ module Hutch
         if @config[:mq_tls_ca_certificates]
           params[:tls_ca_certificates] = @config[:mq_tls_ca_certificates]
         end
+        if @config[:mq_tls_server_name]
+          params[:tls_server_name] = @config[:mq_tls_server_name]
+        end
         params[:heartbeat]          = @config[:heartbeat]
         params[:client_properties]  = @config[:mq_client_properties]
         params[:connection_name]    = @config[:connection_name]

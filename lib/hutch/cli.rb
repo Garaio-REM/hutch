@@ -120,6 +120,10 @@ module Hutch
           Hutch::Config.mq_tls = tls
         end
 
+        opts.on("--mq-tls-server-name", 'Use this server name for TLS SNI for the AMQP connection') do |tls_server_name|
+          Hutch::Config.mq_tls_server_name = tls_server_name
+        end
+
         opts.on('--mq-tls-cert FILE', 'Certificate for TLS client verification') do |file|
           abort_without_file(file, 'Certificate file') do
             Hutch::Config.mq_tls_cert = file

@@ -113,6 +113,9 @@ module Hutch
     # Should TLS be used?
     boolean_setting :mq_tls, false
 
+    # The TLS sevrer name for SNI (Server Name Indication)
+    string_setting :mq_tls_server_name, nil
+
     # Should SSL certificate be verified?
     boolean_setting :mq_verify_peer, true
 
